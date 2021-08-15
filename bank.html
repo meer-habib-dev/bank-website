@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="w-3/4 mx-auto h-screen grid grid-cols-1 place-content-center">
+        <h1 class="text-center text-6xl mt-6 mb-12 font-medium">Lets Get Some <span
+                class="text-purple-700 font-bold ">Baaper-Taka!!!</span></h1>
+        <section class="">
+            <div class="grid grid-cols-3 gap-4 text-white text-center">
+                <div class="bg-purple-300 py-5 px-3 rounded">
+                    <h2 class="text-3xl font-medium">Deposit</h2>
+                    <h2 class="text-5xl font-medium">$<span id="depositeAmount">00</span></h2>
+                </div>
+                <div class="bg-blue-300 py-5 px-3 rounded">
+                    <h2 class="text-3xl font-medium">Withdraw</h2>
+                    <h2 class="text-5xl font-medium">$<span id="withdrawAmt">00</span></h2>
+                </div>
+                <div class="bg-green-300 py-5 px-3 rounded">
+                    <h2 class="text-3xl font-medium">Balance</h2>
+                    <h2 class="text-5xl font-medium">$<span id="balanceAmount">1200</span></h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-5">
+            <!-- here are the deposites -->
+            <div class="grid grid-cols-2 gap-4 text-white ">
+                <div class="W-100 p-5 m-auto bg-pink-500 rounded w-full">
+                    <p class="font-bold text-3xl text-center">Deposit Here</p>
+                    <div class="text-center">
+                        <input id="user-deposit" class="block rounded-full py-3 px-6 my-3 w-72 m-auto text-black"
+                            type="text" placeholder="Taka" name="" id="">
+                        <button id="deposit-btn"
+                            class="rounded-full py-3 px-6 font-medium bg-indigo-700 text-white">Deposit</button>
+                    </div>
+                </div>
+                <!-- here you can withdraw  -->
+                <div class="W-100 p-5 m-auto bg-indigo-700 rounded w-full">
+                    <p class="font-bold text-3xl text-center">Make Withdraw</p>
+                    <div class="text-center">
+                        <input id="user-withdraw" class="block rounded-full py-3 px-6 my-3 w-72 m-auto text-black"
+                            type="nubmer" placeholder="Taka" name="" id="">
+                        <button id="withdraw-btn"
+                            class="rounded-full py-3 px-6 font-medium bg-pink-500 text-white">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/banking.js"></script>
+    
+</body>
+</html>
