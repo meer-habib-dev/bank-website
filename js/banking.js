@@ -1,41 +1,86 @@
+//get value of input and conver to number
+function getInputValue(inputId) {
+    const input = document.getElementById(inputId);
+    const inputValue = parseFloat(input.value);
+    input.value = '';
+    return inputValue;
+}
+
+//get value of span and convert to number
+function getSpanValue(spanId,depoAmount) {
+    const spanText = document.getElementById(spanId);
+    const spanValue = parseFloat(spanText.innerText);
+    const totalAmout = spanValue + depoAmount;
+    spanText.innerText = totalAmout;
+
+}
+
+//get current value
+function currentBalance() {
+    
+    const balance = document.getElementById("balanceAmount");
+    const balanceInt = parseFloat(balance.innerText);
+    return balanceInt;
+}
+//add and reduce the value of bank total
+function calculateBal(depoAmount,isAdd) {
+
+    const balance = document.getElementById("balanceAmount");
+    const balanceInt = currentBalance();
+    
+    if (isAdd == true) {
+        const totalBalance = balanceInt + depoAmount;
+        balance.innerText = totalBalance;
+    } else if(isAdd == false){
+        const totalBalance = balanceInt - depoAmount;
+        balance.innerText = totalBalance;
+        
+    }
+}
+
 //add deposite amount using event handler
 document.getElementById('deposit-btn').addEventListener('click', function () {
-    const depositeInput = document.getElementById('user-deposit');
-    const depoAmount = parseFloat(depositeInput.value);
-   depositeInput.value = '';
-    //get values of deposite 
-    const depositeValue = document.getElementById('depositeAmount');
-    const depositeValueInt = parseFloat(depositeValue.innerText);
-    const totalDeposite = depositeValueInt + depoAmount
 
-    depositeValue.innerText = totalDeposite;
-    
-    //add deposite values with balance
-    const balance = document.getElementById('balanceAmount');
-    const balanceInt = parseFloat(balance.innerText)
-    const totalBalance = balanceInt + depoAmount;
-    balance.innerText = totalBalance;
+    //get the value of input
+    const depoAmount = getInputValue('user-deposit');
+
+    if (depoAmount < 0) {
+        alert('Positive Number Lik');
+    }
+    if(depoAmount > 0){
+        //get values of deposite 
+        getSpanValue('depositeAmount',depoAmount);
+
+        //add deposite values with balance
+        calculateBal(depoAmount,true)  
+    }
+
 
 });
 
 //add withdraw amount and reduce the amount from balance;
 
 document.getElementById('withdraw-btn').addEventListener('click', function () {
-    const withdrawInput = document.getElementById('user-withdraw');
-    const withdrawValue = parseFloat(withdrawInput.value);
-    withdrawInput.value = '';
+    
+    //get the value of input;
+    const withdrawValue = getInputValue('user-withdraw');
 
-    //get the value of withdraw ammount;
-    const withdrawAmount = document.getElementById('withdrawAmt');
-    const withdrawAmtInt = parseFloat(withdrawAmount.innerText);
-    const totalWithdraw = withdrawAmtInt + withdrawValue;
-    withdrawAmount.innerText = totalWithdraw;
+    if (withdrawValue < 0 || withdrawValue > currentBalance()) {
+        alert('Please give a amount that you have on your account');
+    } else if (withdrawValue > 0 && withdrawValue < currentBalance()) {
+    //get the span value of withdraw amount;
+    getSpanValue('withdrawAmt', withdrawValue);
 
+    //calculate the balance amount;
+    calculateBal(withdrawValue, false);
+    }
 
-    //Reduce Withdraw amount from Total Balance
-    const balance = document.getElementById('balanceAmount');
-    const redBalanceInt = parseFloat(balance.innerText)
-    TotalBalanceAmount = redBalanceInt - withdrawValue;
-    balance.innerText = TotalBalanceAmount;
-
+    
 });
+
+const dek = document.querySelectorAll('div');
+console.log(dek)
+
+function value(10,20) {
+    console.log(value);
+}
